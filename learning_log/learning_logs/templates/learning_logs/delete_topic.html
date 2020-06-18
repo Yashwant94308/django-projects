@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete-Topic</title>
+</head>
+<body>
+{% extends "learning_logs/base.html" %}
+{% block header %}
+    <h3 style="color:red">
+        Delete Topic -->
+        <a href="{% url 'learning_logs:topic' topic.id %}" style="color:green" class="clr">
+            {{ topic }}
+        </a>
+    </h3>
+{% endblock header %}
+{% block content %}
+
+<form  action="" method="post" class="form">
+    {% csrf_token %}
+
+    <h3>
+        Are you sure you want to delete this post?
+        <input type="submit" value="Yes" class="btn btn-primary"/>
+        <a href="/topics/"><button type="button" class="btn btn-primary" value="No">
+            Cancel
+        </button></a>
+
+    </h3>
+</form>
+
+{% endblock content %}
+</body>
+</html>

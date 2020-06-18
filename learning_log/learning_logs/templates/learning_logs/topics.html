@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Topics</title>
+    <style>
+        a.hor:hover{ background-color: yellow;}
+    </style>
+</head>
+<body>
+{% extends "learning_logs/base.html" %}
+{% load bootstrap3 %}
+ {% block header %}
+    <h1 style="color:green">Topics</h1>
+ {% endblock header %}
+{% block content %}
+
+<ul>
+    {% for topic in topics %}
+    <li><h4>
+        <a href="{% url 'learning_logs:topic' topic.id %}" class="hor">{{ topic }}</a>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a href="{% url 'learning_logs:delete_topic' topic.id %}">
+            <button name="button" class="btn btn-danger">
+                delete
+            </button>
+        </a>
+
+    </h4></li>
+    {% empty %}
+    <li><b>No topics have been added yet.</b></li>
+    {% endfor %}
+</ul>
+<h3><a href="{% url 'learning_logs:new_topic' %}" class="clr">Add a new topic</a></h3>
+
+{% endblock content %}
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Entry</title>
+
+</head>
+<body>
+{% extends "learning_logs/base.html" %}
+{% load bootstrap3 %}
+{% block header %}
+    <h3>
+        <a href="{% url 'learning_logs:topic' topic.id %}" style="color:green" class="clr">
+            {{ topic }}
+        </a>
+    </h3>
+{% endblock header %}
+
+{% block content %}
+<h4 style="color:blue">
+Edit Entry:
+</h4>
+
+<form action="{% url 'learning_logs:edit_entry' entry.id %}" method = 'post' class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button name="submit" class="btn btn-primary">save change</button>
+    {% endbuttons %}
+</form>
+{% endblock content %}
+
+</body>
+</html>

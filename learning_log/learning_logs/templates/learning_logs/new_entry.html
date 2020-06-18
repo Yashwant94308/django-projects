@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New-Entry</title>
+    <style>
+        a.clr:hover{
+            background-color = yellow;
+            }
+
+    </style>
+</head>
+<body>
+{% extends "learning_logs/base.html" %}
+{% load bootstrap3 %}
+{% block header %}
+    <h3 >
+        <a href="{% url 'learning_logs:topic' topic.id %}" style="color:green" class="clr">
+        {{ topic }}
+        </a>
+    </h3>
+{% endblock header %}
+{% block content %}
+
+
+<h4 style="color:blue">Add a new entry:</h4>
+<form action="{% url 'learning_logs:new_entry' topic.id %}" method='post' class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button name="submit" class="btn btn-primary"> ADD-ENTRY</button>
+    {% endbuttons %}
+</form>
+
+{% endblock content %}
+</body>
+</html>
